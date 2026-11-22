@@ -1,0 +1,19 @@
+# --- build: compile TypeScript ---
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json yarn.lock* ./
+RUN yarn install
+COPY tsconfig.json ./
+COPY src ./src
+RUN yarn build
+
+# --- run: production dependencies + compiled code only ---
+FROM node:22-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package.json yarn.lock* ./
+RUN yarn install --production && yarn cache clean
+COPY --from=build /app/dist ./dist
+USER node
+EXPOSE 3000
+CMD ["node", "dist/index.js"]

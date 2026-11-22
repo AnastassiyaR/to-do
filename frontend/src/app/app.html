@@ -1,0 +1,52 @@
+<div class="app-wrapper">
+  <h1>To-do list</h1>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  <div class="todo-container">
+
+    <div class="input">
+      <input
+        #text
+        placeholder="Add new task"
+        aria-label="New task"
+        (keyup.enter)="add(text.value); text.value = ''"
+      />
+      <button class="button-add" (click)="add(text.value); text.value = ''">Add</button>
+    </div>
+
+    <div class="justtasks">
+      <section class="activetasks">
+        <h2>Active Tasks</h2>
+        @for (todo of activeTodos(); track todo.id) {
+          <label class="task">
+            <input type="checkbox" (change)="toggle(todo)" />
+            <span>{{ todo.desc }}</span>
+          </label>
+        } @empty {
+          <p class="empty">No active tasks.</p>
+        }
+      </section>
+
+      <section class="completedtasks">
+        <div class="tb">
+          <h2>Completed Tasks</h2>
+          @if (completedTodos().length > 0) {
+            <button class="deletedbutton" (click)="clearCompleted()">DELETE ALL</button>
+          }
+        </div>
+        @for (todo of completedTodos(); track todo.id) {
+          <label class="task">
+            <input type="checkbox" checked (change)="toggle(todo)" />
+            <span>{{ todo.desc }}</span>
+          </label>
+        } @empty {
+          <p class="empty">No completed tasks.</p>
+        }
+      </section>
+    </div>
+
+  </div>
+</div>

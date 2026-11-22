@@ -1,0 +1,122 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  font-size: 60px;
+  font-weight: bolder;
+}
+
+.input {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: auto;
+  padding: 10px;
+}
+
+.input input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.button-add {
+  color: #2e7d57;
+  background-color: white;
+  border: 1px solid #2e7d57;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-add:hover {
+  color: rgb(142, 60, 60);
+}
+
+.justtasks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.activetasks,
+.completedtasks {
+  box-sizing: border-box;
+  width: 330px;
+  margin-top: 30px;
+  padding: 15px;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.activetasks {
+  background-color: rgb(44, 110, 110);
+}
+
+.completedtasks {
+  background-color: rgb(46, 125, 80);
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+}
+
+.tb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.tb h2 {
+  margin: 0;
+}
+
+/* Long text wraps by itself, no manual <br> needed */
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.task input {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.empty {
+  margin: 0;
+}
+
+.tb + .task,
+.tb + .empty {
+  margin-top: 16px;
+}
+
+.deletedbutton {
+  color: #5a1b1b;
+  background-color: #f09696;
+  border: 1px solid #7e3232;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.error {
+  max-width: 480px;
+  margin: 10px auto;
+  padding: 10px 14px;
+  color: #5a1b1b;
+  background-color: #f9d6d6;
+  border: 1px solid #7e3232;
+  border-radius: 4px;
+}
